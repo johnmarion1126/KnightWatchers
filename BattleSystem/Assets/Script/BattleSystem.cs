@@ -1,53 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public enum BattleState
-{
-    Start,
-    PlayerAction,
-    PlayerMove,
-    EnemyMove,
-    Busy
-}
+public enum BattleState { START, PLAYERTURN, PLAYERMOVE, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField]
-    BattleDialogBox dialogBox;
 
-    BattleState state;
-    int currentAction;
+	public GameObject playerPrefab;
+	public GameObject enemyPrefab;
+
+	Unit playerUnit;
+	Unit enemyUnit;
+
+	public BattleDialogBox dialogBox;
+
+	public BattleHUD playerHUD;
+	public BattleHUD enemyHUD;
+
+	public BattleState state;
+	int currentAction;
+
+	void Awake()
+	{
+		GameObject playerGO = Instantiate(playerPrefab);
+		playerUnit = playerGO.GetComponent<Unit>();
+		GameObject enemyGO = Instantiate(enemyPrefab);
+		enemyUnit = enemyGO.GetComponent<Unit>();
+		playerHUD.SetHUD(playerUnit);
+		enemyHUD.SetHUD(enemyUnit);
+
+	}
 
     void Start()
     {
-        StartCoroutine(SetupBattle());
+		state = BattleState.START;
+		StartCoroutine(SetupBattle());
     }
 
-    public IEnumerator SetupBattle()
-    {
-        yield return dialogBox.TypeDialog("A new foe has appeared!");
-        yield return new WaitForSeconds(1f);
+	IEnumerator SetupBattle()
+	{
+		yield return dialogBox.TypeDialog("A wild " + enemyUnit.unitName + " approaches...");
+		yield return new WaitForSeconds(1f);
+		StartCoroutine(PlayerTurn());
+	}
 
-        PlayerAction();
-    }
+	IEnumerator PlayerTurn()
+	{
+		state = BattleState.PLAYERTURN;
+		yield return dialogBox.TypeDialog("Choose an action:");
+		dialogBox.EnableActionSelector(true);
+	}
 
-    void PlayerAction()
-    {
-        state = BattleState.PlayerAction;
-        StartCoroutine(dialogBox.TypeDialog("Choose an action."));
-        dialogBox.EnableActionSelector(true);
-    }
+	private void Update()
+	{
+		if (state == BattleState.PLAYERTURN)
+		{
+			HandleActionSelection();
+		}
+	}
 
-    private void Update()
-    {
-        if (state == BattleState.PlayerAction)
-        {
-            HandleActionSelection();
-        }
-    }
-
-    void HandleActionSelection()
+	void HandleActionSelection()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -70,12 +84,91 @@ public class BattleSystem : MonoBehaviour
         {
             if (currentAction == 0)
             {
-                //Fight
+                StartCoroutine(PlayerAttack());
             }
-            else if (currentAction == 0)
+            else if (currentAction == 1)
             {
-                //Run
+                StartCoroutine(PlayerHeal());
             }
         }
     }
+
+	IEnumerator PlayerAttack()
+	{
+		state = BattleState.PLAYERMOVE;
+		dialogBox.EnableActionSelector(false);
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " attacks!");
+		yield return new WaitForSeconds(1f);
+
+		bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+
+		enemyHUD.SetHP(enemyUnit.currentHP);
+		yield return dialogBox.TypeDialog("The attack is successful!");
+
+		yield return new WaitForSeconds(1f);
+
+		if(isDead)
+		{
+			state = BattleState.WON;
+			StartCoroutine(EndBattle());
+		} 
+		else
+		{
+			state = BattleState.ENEMYTURN;
+			StartCoroutine(EnemyTurn());
+		}
+	}
+
+	IEnumerator PlayerHeal()
+	{
+		state = BattleState.PLAYERMOVE;
+		dialogBox.EnableActionSelector(false);
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " heals for 5.");
+		yield return new WaitForSeconds(1f);
+		playerUnit.Heal(5);
+
+		playerHUD.SetHP(playerUnit.currentHP);
+		yield return dialogBox.TypeDialog("You feel renewed strength!");
+
+		yield return new WaitForSeconds(1f);
+
+		state = BattleState.ENEMYTURN;
+		StartCoroutine(EnemyTurn());
+	}
+
+	IEnumerator EnemyTurn()
+	{
+		yield return dialogBox.TypeDialog(enemyUnit.unitName + " attacks!");
+
+		yield return new WaitForSeconds(1f);
+
+		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+
+		playerHUD.SetHP(playerUnit.currentHP);
+
+		yield return new WaitForSeconds(1f);
+
+		if(isDead)
+		{
+			state = BattleState.LOST;
+			StartCoroutine(EndBattle());
+		} 
+		else
+		{
+			StartCoroutine(PlayerTurn());
+		}
+
+	}
+
+	IEnumerator EndBattle()
+	{
+		if(state == BattleState.WON)
+		{
+			yield return dialogBox.TypeDialog("You won the battle!");
+		} 
+		else if (state == BattleState.LOST)
+		{
+			yield return dialogBox.TypeDialog("You were defeated.");
+		}
+	}
 }
