@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, PLAYERMOVE, ENEMYTURN, WON, LOST }
@@ -65,14 +66,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (currentAction < 1)
+            if (currentAction <= 1)
             {
                 ++currentAction;
             }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (currentAction > 0)
+            if (currentAction >= 1)
             {
                 --currentAction;
             }
@@ -90,6 +91,10 @@ public class BattleSystem : MonoBehaviour
             {
                 StartCoroutine(PlayerHeal());
             }
+			else if (currentAction == 2)
+			{
+				StartCoroutine(PlayerRun());
+			}
         }
     }
 
@@ -136,6 +141,15 @@ public class BattleSystem : MonoBehaviour
 		StartCoroutine(EnemyTurn());
 	}
 
+	IEnumerator PlayerRun()
+	{
+		dialogBox.EnableActionSelector(false);
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " ran away...");
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene("OverWorld");
+	}
+
+
 	IEnumerator EnemyTurn()
 	{
 		yield return dialogBox.TypeDialog(enemyUnit.unitName + " attacks!");
@@ -165,10 +179,14 @@ public class BattleSystem : MonoBehaviour
 		if(state == BattleState.WON)
 		{
 			yield return dialogBox.TypeDialog("You won the battle!");
+			yield return new WaitForSeconds(1f);
+			SceneManager.LoadScene("OverWorld");
 		} 
 		else if (state == BattleState.LOST)
 		{
-			yield return dialogBox.TypeDialog("You were defeated.");
+			yield return dialogBox.TypeDialog("You were defeated...");
+			yield return new WaitForSeconds(1f);
+			SceneManager.LoadScene("OverWorld");
 		}
 	}
 }
