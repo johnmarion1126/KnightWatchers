@@ -9,27 +9,50 @@ public enum BattleState { START, PLAYERTURN, PLAYERMOVE, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
 
-	public GameObject playerPrefab;
+	//New Player Prefabs
+	public GameObject playerPrefab_1;
+	public GameObject playerPrefab_2;
+	public GameObject playerPrefab_3;
+
 	public GameObject enemyPrefab;
 
-	Unit playerUnit;
+	//New Player Units
+	Unit playerUnit_1;
+	Unit playerUnit_2;
+	Unit playerUnit_3;
+
 	Unit enemyUnit;
 
 	public BattleDialogBox dialogBox;
 
-	public BattleHUD playerHUD;
+	//New Player HUDs
+	public BattleHUD playerHUD_1;
+	public BattleHUD playerHUD_2;
+	public BattleHUD playerHUD_3;
+
 	public BattleHUD enemyHUD;
 
 	public BattleState state;
 	int currentAction;
+	int playerID;
+	int randomInt;
+	bool isDead;
 
 	void Awake()
 	{
-		GameObject playerGO = Instantiate(playerPrefab);
-		playerUnit = playerGO.GetComponent<Unit>();
+		//Initialize player units
+		GameObject playerGO_1 = Instantiate(playerPrefab_1);
+		GameObject playerGO_2 = Instantiate(playerPrefab_2);
+		GameObject playerGO_3 = Instantiate(playerPrefab_3);
+		playerUnit_1 = playerGO_1.GetComponent<Unit>();
+		playerUnit_2 = playerGO_2.GetComponent<Unit>();
+		playerUnit_3 = playerGO_3.GetComponent<Unit>();
+		playerHUD_1.SetHUD(playerUnit_1);
+		playerHUD_2.SetHUD(playerUnit_2);
+		playerHUD_3.SetHUD(playerUnit_3);
+
 		GameObject enemyGO = Instantiate(enemyPrefab);
 		enemyUnit = enemyGO.GetComponent<Unit>();
-		playerHUD.SetHUD(playerUnit);
 		enemyHUD.SetHUD(enemyUnit);
 
 	}
@@ -50,7 +73,7 @@ public class BattleSystem : MonoBehaviour
 	IEnumerator PlayerTurn()
 	{
 		state = BattleState.PLAYERTURN;
-		yield return dialogBox.TypeDialog("Choose an action:");
+		yield return dialogBox.TypeDialog("Choose an action!");
 		dialogBox.EnableActionSelector(true);
 	}
 
@@ -58,11 +81,23 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (state == BattleState.PLAYERTURN)
 		{
-			HandleActionSelection();
+			if (playerID == 0) 
+			{
+				HandleActionSelection(playerUnit_1, playerHUD_1);
+			}
+			else if (playerID == 1)
+			{
+				HandleActionSelection(playerUnit_2, playerHUD_2);
+			}
+			else if (playerID == 2)
+			{
+				HandleActionSelection(playerUnit_3, playerHUD_3);
+			}
+			
 		}
 	}
 
-	void HandleActionSelection()
+	void HandleActionSelection(Unit playerUnit, BattleHUD playerHUD)
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -85,20 +120,20 @@ public class BattleSystem : MonoBehaviour
         {
             if (currentAction == 0)
             {
-                StartCoroutine(PlayerAttack());
+                StartCoroutine(PlayerAttack(playerUnit));
             }
             else if (currentAction == 1)
             {
-                StartCoroutine(PlayerHeal());
+                StartCoroutine(PlayerHeal(playerUnit, playerHUD));
             }
 			else if (currentAction == 2)
 			{
-				StartCoroutine(PlayerRun());
+				StartCoroutine(PlayerRun(playerUnit));
 			}
         }
     }
 
-	IEnumerator PlayerAttack()
+	IEnumerator PlayerAttack(Unit playerUnit)
 	{
 		state = BattleState.PLAYERMOVE;
 		dialogBox.EnableActionSelector(false);
@@ -124,11 +159,11 @@ public class BattleSystem : MonoBehaviour
 		}
 	}
 
-	IEnumerator PlayerHeal()
+	IEnumerator PlayerHeal(Unit playerUnit, BattleHUD playerHUD)
 	{
 		state = BattleState.PLAYERMOVE;
 		dialogBox.EnableActionSelector(false);
-		yield return dialogBox.TypeDialog(playerUnit.unitName + " heals for 5.");
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " heals for 5...");
 		yield return new WaitForSeconds(1f);
 		playerUnit.Heal(5);
 
@@ -141,7 +176,7 @@ public class BattleSystem : MonoBehaviour
 		StartCoroutine(EnemyTurn());
 	}
 
-	IEnumerator PlayerRun()
+	IEnumerator PlayerRun(Unit playerUnit)
 	{
 		dialogBox.EnableActionSelector(false);
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " ran away...");
@@ -156,9 +191,26 @@ public class BattleSystem : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 
-		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+		randomInt = Random.Range(1,3);
 
-		playerHUD.SetHP(playerUnit.currentHP);
+		if (randomInt == 0)
+		{
+			yield return dialogBox.TypeDialog(playerUnit_1.unitName + " took damage!");
+			isDead = playerUnit_1.TakeDamage(enemyUnit.damage);
+			playerHUD_1.SetHP(playerUnit_1.currentHP);
+		}
+		else if (randomInt == 1)
+		{
+			yield return dialogBox.TypeDialog(playerUnit_2.unitName + " took damage!");
+			isDead = playerUnit_2.TakeDamage(enemyUnit.damage);
+			playerHUD_2.SetHP(playerUnit_2.currentHP);
+		}
+		else if (randomInt == 2)
+		{
+			yield return dialogBox.TypeDialog(playerUnit_3.unitName + " took damage!");
+			isDead = playerUnit_3.TakeDamage(enemyUnit.damage);
+			playerHUD_3.SetHP(playerUnit_3.currentHP);
+		}
 
 		yield return new WaitForSeconds(1f);
 
@@ -169,6 +221,10 @@ public class BattleSystem : MonoBehaviour
 		} 
 		else
 		{
+			playerID += 1;
+			if (playerID == 3) {
+				playerID = 0;
+			}
 			StartCoroutine(PlayerTurn());
 		}
 
