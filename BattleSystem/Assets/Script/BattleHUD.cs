@@ -18,10 +18,18 @@ public class BattleHUD : MonoBehaviour
 		health.transform.localScale = new Vector3(1f,1f);
 	}
 
-	public void SetHP(int hp)
+	public void SetHP(int hp, float maxHP)
 	{
-		calculatedHP = hp / 50f;
+		calculatedHP = hp / maxHP;
+		if (calculatedHP < 0)
+		{
+			health.transform.localScale = new Vector3(0,1f);
+		}
+		else
+		{
 		health.transform.localScale = new Vector3(calculatedHP,1f);
+		}
+		
 	}
 
 }

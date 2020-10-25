@@ -548,15 +548,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844352391784136438, guid: 9d9db85d3ec612446b37865953a195c7, type: 3}
       propertyPath: damage
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2844352391784136438, guid: 9d9db85d3ec612446b37865953a195c7, type: 3}
       propertyPath: maxHP
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2844352391784136438, guid: 9d9db85d3ec612446b37865953a195c7, type: 3}
       propertyPath: currentHP
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2844352391784136438, guid: 9d9db85d3ec612446b37865953a195c7, type: 3}
       propertyPath: unitName
@@ -2248,7 +2248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8875bb14b3864c440aca2909d3fba8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lettersPerSecond: 25
+  lettersPerSecond: 30
   highlightedColor: {r: 0, g: 0.820076, b: 1, a: 1}
   dialogText: {fileID: 1076095487}
   actionSelector: {fileID: 137923194}
