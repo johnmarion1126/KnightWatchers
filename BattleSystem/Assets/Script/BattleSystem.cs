@@ -1,64 +1,134 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public enum BattleState
-{
-    Start,
-    PlayerAction,
-    PlayerMove,
-    EnemyMove,
-    Busy
-}
+public enum BattleState { START, PLAYERTURN, PLAYERMOVE, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField]
-    BattleDialogBox dialogBox;
 
-    BattleState state;
-    int currentAction;
+	//New Player Prefabs
+	public GameObject playerPrefab_1;
+	public GameObject playerPrefab_2;
+	public GameObject playerPrefab_3;
+
+	public GameObject enemyPrefab;
+
+	//New Player Units
+	Unit playerUnit_1;
+	Unit playerUnit_2;
+	Unit playerUnit_3;
+
+	Unit enemyUnit;
+
+	public BattleDialogBox dialogBox;
+
+	//New Player HUDs
+	public BattleHUD playerHUD_1;
+	public BattleHUD playerHUD_2;
+	public BattleHUD playerHUD_3;
+
+	public BattleHUD enemyHUD;
+
+	public BattleState state;
+
+	private int maxPlayers = 3;
+	private int playerID = 0;
+	int currentAction;
+	int randomInt;
+
+	private bool player1Dead;
+	private bool player2Dead;
+	private bool player3Dead;
+	bool isDead;
+
+	void Awake()
+	{
+		//Initialize player units
+		GameObject playerGO_1 = Instantiate(playerPrefab_1);
+		GameObject playerGO_2 = Instantiate(playerPrefab_2);
+		GameObject playerGO_3 = Instantiate(playerPrefab_3);
+		playerUnit_1 = playerGO_1.GetComponent<Unit>();
+		playerUnit_2 = playerGO_2.GetComponent<Unit>();
+		playerUnit_3 = playerGO_3.GetComponent<Unit>();
+		playerHUD_1.SetHUD(playerUnit_1);
+		playerHUD_2.SetHUD(playerUnit_2);
+		playerHUD_3.SetHUD(playerUnit_3);
+
+		GameObject enemyGO = Instantiate(enemyPrefab);
+		enemyUnit = enemyGO.GetComponent<Unit>();
+		enemyHUD.SetHUD(enemyUnit);
+
+	}
 
     void Start()
     {
-        StartCoroutine(SetupBattle());
+		state = BattleState.START;
+		StartCoroutine(SetupBattle());
     }
 
-    public IEnumerator SetupBattle()
-    {
-        yield return dialogBox.TypeDialog("A new foe has appeared!");
-        yield return new WaitForSeconds(1f);
+	IEnumerator SetupBattle()
+	{
+		yield return dialogBox.TypeDialog("A wild " + enemyUnit.unitName + " approaches...");
+		yield return new WaitForSeconds(1f);
+		StartCoroutine(PlayerTurn());
+	}
 
-        PlayerAction();
-    }
+	IEnumerator PlayerTurn()
+	{
+		state = BattleState.PLAYERTURN;
+		yield return dialogBox.TypeDialog("Choose an action!");
+		dialogBox.EnableActionSelector(true);
+	}
 
-    void PlayerAction()
-    {
-        state = BattleState.PlayerAction;
-        StartCoroutine(dialogBox.TypeDialog("Choose an action."));
-        dialogBox.EnableActionSelector(true);
-    }
+	private void Update()
+	{
+		if (state == BattleState.PLAYERTURN)
+		{
+			if (playerID == 0) 
+			{
+				if (player1Dead)
+				{
+					playerID += 1;
+					Update();
+				}
+				HandleActionSelection(playerUnit_1, playerHUD_1);
+			}
+			else if (playerID == 1)
+			{
+				if (player2Dead)
+				{
+					playerID += 1;
+					Update();
+				}
+				HandleActionSelection(playerUnit_2, playerHUD_2);
+			}
+			else if (playerID == 2)
+			{
+				if (player3Dead)
+				{
+					playerID = 0;
+					Update();
+				}
+				HandleActionSelection(playerUnit_3, playerHUD_3);
+			}
+		}
+	}
 
-    private void Update()
-    {
-        if (state == BattleState.PlayerAction)
-        {
-            HandleActionSelection();
-        }
-    }
-
-    void HandleActionSelection()
+	void HandleActionSelection(Unit playerUnit, BattleHUD playerHUD)
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (currentAction < 1)
+            if (currentAction <= 1)
             {
                 ++currentAction;
             }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (currentAction > 0)
+            if (currentAction >= 1)
             {
                 --currentAction;
             }
@@ -70,12 +140,181 @@ public class BattleSystem : MonoBehaviour
         {
             if (currentAction == 0)
             {
-                //Fight
+                StartCoroutine(PlayerAttack(playerUnit));
             }
-            else if (currentAction == 0)
+            else if (currentAction == 1)
             {
-                //Run
+                StartCoroutine(PlayerHeal(playerUnit, playerHUD));
             }
+			else if (currentAction == 2)
+			{
+				StartCoroutine(PlayerRun(playerUnit));
+			}
         }
     }
+
+	IEnumerator PlayerAttack(Unit playerUnit)
+	{
+		state = BattleState.PLAYERMOVE;
+		dialogBox.EnableActionSelector(false);
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " attacks!");
+		yield return new WaitForSeconds(1f);
+
+		bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+
+		enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit.maxHP);
+		yield return dialogBox.TypeDialog("The attack is successful!");
+
+		yield return new WaitForSeconds(1f);
+
+		if(isDead)
+		{
+			state = BattleState.WON;
+			StartCoroutine(EndBattle());
+		} 
+		else
+		{
+			state = BattleState.ENEMYTURN;
+			StartCoroutine(EnemyTurn());
+		}
+	}
+
+	IEnumerator PlayerHeal(Unit playerUnit, BattleHUD playerHUD)
+	{
+		state = BattleState.PLAYERMOVE;
+		dialogBox.EnableActionSelector(false);
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " heals for 5...");
+		yield return new WaitForSeconds(1f);
+		playerUnit.Heal(5);
+
+		playerHUD.SetHP(playerUnit.currentHP, playerUnit.maxHP);
+		yield return dialogBox.TypeDialog("You feel renewed strength!");
+
+		yield return new WaitForSeconds(1f);
+
+		state = BattleState.ENEMYTURN;
+		StartCoroutine(EnemyTurn());
+	}
+
+	IEnumerator PlayerRun(Unit playerUnit)
+	{
+		dialogBox.EnableActionSelector(false);
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " ran away...");
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene("OverWorld");
+	}
+
+
+	IEnumerator EnemyTurn()
+	{
+		yield return dialogBox.TypeDialog(enemyUnit.unitName + " attacks!");
+		yield return new WaitForSeconds(1f);
+
+		randomInt = Random.Range(1,3);
+
+		while (true)
+		{
+			if (randomInt == 0)
+			{
+				if (player1Dead)
+				{
+					randomInt = 1;
+					continue;
+				}
+
+				yield return dialogBox.TypeDialog(playerUnit_1.unitName + " took damage!");
+				yield return new WaitForSeconds(1f);
+				isDead = playerUnit_1.TakeDamage(enemyUnit.damage);
+				playerHUD_1.SetHP(playerUnit_1.currentHP, playerUnit_1.maxHP);
+
+				if(isDead)
+				{
+					yield return dialogBox.TypeDialog(playerUnit_1.unitName + " lost determination...");
+					yield return new WaitForSeconds(1f);
+					player1Dead = true;
+					maxPlayers -= 1;
+				}
+				break; 
+			}
+
+			else if (randomInt == 1)
+			{
+				if (player2Dead)
+				{
+					randomInt = 2;
+					continue;
+				}
+
+				yield return dialogBox.TypeDialog(playerUnit_2.unitName + " took damage!");
+				yield return new WaitForSeconds(1f);
+				isDead = playerUnit_2.TakeDamage(enemyUnit.damage);
+				playerHUD_2.SetHP(playerUnit_2.currentHP, playerUnit_2.maxHP);
+
+				if(isDead)
+				{
+					yield return dialogBox.TypeDialog(playerUnit_2.unitName + " lost determination...");
+					yield return new WaitForSeconds(1f);
+					player2Dead = true;
+					maxPlayers -= 1;
+				}
+				break; 
+			}
+			
+			else if (randomInt == 2)
+			{
+				if (player3Dead)
+				{
+					randomInt = 0;
+					continue;
+				}
+
+				yield return dialogBox.TypeDialog(playerUnit_3.unitName + " took damage!");
+				yield return new WaitForSeconds(1f);
+				isDead = playerUnit_3.TakeDamage(enemyUnit.damage);
+				playerHUD_3.SetHP(playerUnit_3.currentHP, playerUnit_3.maxHP);
+
+				if(isDead)
+				{
+					yield return dialogBox.TypeDialog(playerUnit_3.unitName + " lost determination...");
+					yield return new WaitForSeconds(1f);
+					player3Dead = true;
+					maxPlayers -= 1;
+				}
+				break; 
+			}
+		}
+
+		if(maxPlayers == 0)
+		{
+			state = BattleState.LOST;
+			StartCoroutine(EndBattle());
+		} 
+		else
+		{
+			playerID += 1;
+			if (playerID == 3)
+			{
+				playerID = 0;
+			}
+
+			StartCoroutine(PlayerTurn());
+		}
+
+	}
+
+	IEnumerator EndBattle()
+	{
+		if(state == BattleState.WON)
+		{
+			yield return dialogBox.TypeDialog("You won the battle!");
+			yield return new WaitForSeconds(1f);
+			SceneManager.LoadScene("OverWorld");
+		} 
+		else if (state == BattleState.LOST)
+		{
+			yield return dialogBox.TypeDialog("Team was defeated...");
+			yield return new WaitForSeconds(1f);
+			SceneManager.LoadScene("OverWorld");
+		}
+	}
 }

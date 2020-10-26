@@ -5,18 +5,11 @@ using UnityEngine.UI;
 
 public class BattleDialogBox : MonoBehaviour
 {
-    [SerializeField]
-    int lettersPerSecond;
-    [SerializeField]
-    Color highlightedColor;
-
-    [SerializeField]
-    Text dialogText;
-    [SerializeField]
-    GameObject actionSelector;
-
-    [SerializeField]
-    List<Text> actionTexts;
+    public int lettersPerSecond;
+    public Color highlightedColor;
+    public Text dialogText;
+    public GameObject actionSelector;
+    public List<Text> actionTexts;
 
     public void SetDialog(string dialog)
     {
@@ -35,6 +28,7 @@ public class BattleDialogBox : MonoBehaviour
 
     public void EnableDialogText(bool enabled)
     {
+        Debug.Log("Action Selector is Enabled");
         dialogText.enabled = enabled;
     }
 
