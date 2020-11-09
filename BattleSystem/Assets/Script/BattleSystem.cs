@@ -39,9 +39,9 @@ public class BattleSystem : MonoBehaviour
 	int currentAction;
 	int randomInt;
 
-	private bool player1Dead;
-	private bool player2Dead;
-	private bool player3Dead;
+	//private bool player1Dead;
+	//private bool player2Dead;
+	//private bool player3Dead;
 	bool isDead;
 
 	void Awake()
@@ -89,7 +89,7 @@ public class BattleSystem : MonoBehaviour
 		{
 			if (playerID == 0) 
 			{
-				if (player1Dead)
+				if (playerUnit_1.playerDead)
 				{
 					playerID += 1;
 					Update();
@@ -98,7 +98,7 @@ public class BattleSystem : MonoBehaviour
 			}
 			else if (playerID == 1)
 			{
-				if (player2Dead)
+				if (playerUnit_2.playerDead)
 				{
 					playerID += 1;
 					Update();
@@ -107,7 +107,7 @@ public class BattleSystem : MonoBehaviour
 			}
 			else if (playerID == 2)
 			{
-				if (player3Dead)
+				if (playerUnit_3.playerDead)
 				{
 					playerID = 0;
 					Update();
@@ -207,80 +207,59 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator EnemyTurn()
 	{
-		yield return dialogBox.TypeDialog(enemyUnit.unitName + " attacks!");
-		yield return new WaitForSeconds(1f);
-
-		randomInt = Random.Range(1,3);
-
-		while (true)
+		
+		if ((randomInt = Random.Range(1,4)) == 1) 
 		{
-			if (randomInt == 0)
+			yield return dialogBox.TypeDialog(enemyUnit.unitName + " uses holy water!");
+			yield return new WaitForSeconds(1f);
+			if (!playerUnit_1.playerDead) yield return tookDamage(playerUnit_1, playerHUD_1, enemyUnit.damage/2);
+			if (!playerUnit_2.playerDead) yield return tookDamage(playerUnit_2, playerHUD_2, enemyUnit.damage/2);
+			if (!playerUnit_3.playerDead) yield return tookDamage(playerUnit_3, playerHUD_3, enemyUnit.damage/2);
+		}
+
+		else
+		{
+			yield return dialogBox.TypeDialog(enemyUnit.unitName + " attacks!");
+			yield return new WaitForSeconds(1f);
+
+			randomInt = Random.Range(0,2);
+			while (true)
 			{
-				if (player1Dead)
+				if (randomInt == 0)
 				{
-					randomInt = 1;
-					continue;
+					if (playerUnit_1.playerDead)
+					{
+						randomInt = 1;
+						continue;
+					}
+
+					yield return tookDamage(playerUnit_1, playerHUD_1, enemyUnit.damage);
+					break; 
 				}
 
-				yield return dialogBox.TypeDialog(playerUnit_1.unitName + " took damage!");
-				yield return new WaitForSeconds(1f);
-				isDead = playerUnit_1.TakeDamage(enemyUnit.damage);
-				playerHUD_1.SetHP(playerUnit_1.currentHP, playerUnit_1.maxHP);
-
-				if(isDead)
+				else if (randomInt == 1)
 				{
-					yield return dialogBox.TypeDialog(playerUnit_1.unitName + " lost determination...");
-					yield return new WaitForSeconds(1f);
-					player1Dead = true;
-					maxPlayers -= 1;
-				}
-				break; 
-			}
+					if (playerUnit_2.playerDead)
+					{
+						randomInt = 2;
+						continue;
+					}
 
-			else if (randomInt == 1)
-			{
-				if (player2Dead)
+					yield return tookDamage(playerUnit_2, playerHUD_2, enemyUnit.damage);
+					break; 
+				}
+				
+				else if (randomInt == 2)
 				{
-					randomInt = 2;
-					continue;
-				}
+					if (playerUnit_3.playerDead)
+					{
+						randomInt = 0;
+						continue;
+					}
 
-				yield return dialogBox.TypeDialog(playerUnit_2.unitName + " took damage!");
-				yield return new WaitForSeconds(1f);
-				isDead = playerUnit_2.TakeDamage(enemyUnit.damage);
-				playerHUD_2.SetHP(playerUnit_2.currentHP, playerUnit_2.maxHP);
-
-				if(isDead)
-				{
-					yield return dialogBox.TypeDialog(playerUnit_2.unitName + " lost determination...");
-					yield return new WaitForSeconds(1f);
-					player2Dead = true;
-					maxPlayers -= 1;
+					yield return tookDamage(playerUnit_3, playerHUD_3, enemyUnit.damage);
+					break; 
 				}
-				break; 
-			}
-			
-			else if (randomInt == 2)
-			{
-				if (player3Dead)
-				{
-					randomInt = 0;
-					continue;
-				}
-
-				yield return dialogBox.TypeDialog(playerUnit_3.unitName + " took damage!");
-				yield return new WaitForSeconds(1f);
-				isDead = playerUnit_3.TakeDamage(enemyUnit.damage);
-				playerHUD_3.SetHP(playerUnit_3.currentHP, playerUnit_3.maxHP);
-
-				if(isDead)
-				{
-					yield return dialogBox.TypeDialog(playerUnit_3.unitName + " lost determination...");
-					yield return new WaitForSeconds(1f);
-					player3Dead = true;
-					maxPlayers -= 1;
-				}
-				break; 
 			}
 		}
 
@@ -317,4 +296,22 @@ public class BattleSystem : MonoBehaviour
 			SceneManager.LoadScene("OverWorld");
 		}
 	}
+
+	IEnumerator tookDamage(Unit playerUnit, BattleHUD playerHUD, int damage)
+	{
+		yield return dialogBox.TypeDialog(playerUnit.unitName + " took damage!");
+		yield return new WaitForSeconds(1f);
+
+		isDead = playerUnit.TakeDamage(damage);
+		playerHUD.SetHP(playerUnit.currentHP, playerUnit.maxHP);
+		
+		if (isDead)
+		{
+			yield return dialogBox.TypeDialog(playerUnit.unitName + " lost determination...");
+			yield return new WaitForSeconds(1f);
+			playerUnit.playerDead = true;
+			maxPlayers -= 1;
+		}
+	}
+
 }
