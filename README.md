@@ -1,2 +1,2 @@
 # BattleSystem
-Turn-based battle system for our RPG video game.
+RPG Game with turn-base combat.
