@@ -16,7 +16,6 @@ public class BattleSystem : MonoBehaviour
 
 	public GameObject enemyPrefab;
 
-	//New Player Units
 	Unit playerUnit_1;
 	Unit playerUnit_2;
 	Unit playerUnit_3;
@@ -25,7 +24,6 @@ public class BattleSystem : MonoBehaviour
 
 	public BattleDialogBox dialogBox;
 
-	//New Player HUDs
 	public BattleHUD playerHUD_1;
 	public BattleHUD playerHUD_2;
 	public BattleHUD playerHUD_3;
@@ -39,14 +37,10 @@ public class BattleSystem : MonoBehaviour
 	int currentAction;
 	int randomInt;
 
-	//private bool player1Dead;
-	//private bool player2Dead;
-	//private bool player3Dead;
 	bool isDead;
 
 	void Awake()
 	{
-		//Initialize player units
 		GameObject playerGO_1 = Instantiate(playerPrefab_1);
 		GameObject playerGO_2 = Instantiate(playerPrefab_2);
 		GameObject playerGO_3 = Instantiate(playerPrefab_3);
