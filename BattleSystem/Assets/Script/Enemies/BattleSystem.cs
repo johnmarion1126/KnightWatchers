@@ -65,7 +65,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator SetupBattle()
 	{
-		yield return dialogBox.TypeDialog("A wild " + enemyUnit.unitName + " approaches...");
+		yield return dialogBox.TypeDialog(enemyUnit.unitName + " approaches...");
 		yield return new WaitForSeconds(1f);
 		StartCoroutine(PlayerTurn());
 	}
