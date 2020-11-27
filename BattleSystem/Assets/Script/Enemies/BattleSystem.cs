@@ -204,11 +204,7 @@ public class BattleSystem : MonoBehaviour
 		
 		if ((randomInt = Random.Range(1,4)) == 1) 
 		{
-			yield return dialogBox.TypeDialog(enemyUnit.unitName + " uses holy water!");
-			yield return new WaitForSeconds(1f);
-			if (!playerUnit_1.playerDead) yield return tookDamage(playerUnit_1, playerHUD_1, enemyUnit.damage/2);
-			if (!playerUnit_2.playerDead) yield return tookDamage(playerUnit_2, playerHUD_2, enemyUnit.damage/2);
-			if (!playerUnit_3.playerDead) yield return tookDamage(playerUnit_3, playerHUD_3, enemyUnit.damage/2);
+			yield return specialMove(enemyUnit);
 		}
 
 		else
@@ -288,6 +284,34 @@ public class BattleSystem : MonoBehaviour
 			yield return dialogBox.TypeDialog("Team was defeated...");
 			yield return new WaitForSeconds(1f);
 			SceneManager.LoadScene("OverWorld");
+		}
+	}
+
+	IEnumerator specialMove(Unit enemyUnit)
+	{
+		if (enemyUnit.unitName == "Farm Lady")
+		{
+			yield return dialogBox.TypeDialog("Farm Lady uses milk!");
+			yield return new WaitForSeconds(1f);
+			enemyUnit.Heal(10);
+			yield return dialogBox.TypeDialog("Farm Lady heals for 10...");
+			yield return new WaitForSeconds(1f);
+		}
+		else
+		{
+			if (enemyUnit.unitName == "Priest")
+			{
+				yield return dialogBox.TypeDialog("Priest uses holy water!");
+				yield return new WaitForSeconds(1f);
+			}
+			if (enemyUnit.unitName == "Bard")
+			{
+				yield return dialogBox.TypeDialog("Bard uses WonderWall!");
+				yield return new WaitForSeconds(1f);
+			}
+			if (!playerUnit_1.playerDead) yield return tookDamage(playerUnit_1, playerHUD_1, enemyUnit.damage/2);
+			if (!playerUnit_2.playerDead) yield return tookDamage(playerUnit_2, playerHUD_2, enemyUnit.damage/2);
+			if (!playerUnit_3.playerDead) yield return tookDamage(playerUnit_3, playerHUD_3, enemyUnit.damage/2);
 		}
 	}
 
