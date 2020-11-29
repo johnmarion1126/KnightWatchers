@@ -8,8 +8,6 @@ public enum BattleState { START, PLAYERTURN, PLAYERMOVE, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
-
-	//New Player Prefabs
 	public GameObject playerPrefab_1;
 	public GameObject playerPrefab_2;
 	public GameObject playerPrefab_3;
@@ -74,6 +72,8 @@ public class BattleSystem : MonoBehaviour
 	{
 		state = BattleState.PLAYERTURN;
 		yield return dialogBox.TypeDialog("Choose an action!");
+		yield return new WaitForSeconds(0.5f);
+		yield return dialogBox.TypeDialog("");
 		dialogBox.EnableActionSelector(true);
 	}
 
@@ -152,17 +152,19 @@ public class BattleSystem : MonoBehaviour
 		state = BattleState.PLAYERMOVE;
 		dialogBox.EnableActionSelector(false);
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " attacks!");
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0.7f);
+		StartCoroutine(enemyUnit.flash());
+		yield return new WaitForSeconds(0.3f);
 
 		bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
-
 		enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit.maxHP);
-		yield return dialogBox.TypeDialog("The attack is successful!");
+		yield return dialogBox.TypeDialog(enemyUnit.unitName + " took damage!");
 
 		yield return new WaitForSeconds(1f);
 
 		if(isDead)
 		{
+			StartCoroutine(enemyUnit.fadeOut());
 			state = BattleState.WON;
 			StartCoroutine(EndBattle());
 		} 

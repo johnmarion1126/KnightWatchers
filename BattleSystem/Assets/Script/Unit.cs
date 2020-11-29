@@ -14,6 +14,15 @@ public class Unit : MonoBehaviour
 	public int currentHP;
 	public bool playerDead;
 
+	public SpriteRenderer spriteRenderer;
+	public Sprite originalSprite;
+	public Sprite newSprite;
+	
+	void Start()
+	{
+		spriteRenderer = GameObject.Find("Enemy").GetComponent<SpriteRenderer>();
+	}
+	
 	public bool TakeDamage(int dmg)
 	{
 		currentHP -= dmg;
@@ -35,4 +44,25 @@ public class Unit : MonoBehaviour
 			currentHP = maxHP;
 	}
 
+	public IEnumerator flash()
+	{
+		spriteRenderer.sprite = newSprite;
+		yield return new WaitForSeconds(0.2f);
+		spriteRenderer.sprite = originalSprite;
+		yield return new WaitForSeconds(0.2f);
+		spriteRenderer.sprite = newSprite;
+		yield return new WaitForSeconds(0.2f);
+		spriteRenderer.sprite = originalSprite;
+	}
+
+	public IEnumerator fadeOut()
+	{
+		for (float f = 1f; f >= -0.05f; f -= 0.05f)
+		{
+			Color c = spriteRenderer.material.color;
+			c.a = f;
+			spriteRenderer.material.color = c;
+			yield return new WaitForSeconds(0.05f);
+		}
+	}
 }
