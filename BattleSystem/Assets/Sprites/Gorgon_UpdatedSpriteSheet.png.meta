@@ -1,0 +1,910 @@
+fileFormatVersion: 2
+guid: db71dbc2662614d2ebe96030010f2931
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 516918039790527383
+    second: GorgonWalkDown1
+  - first:
+      213: 6115617271050135599
+    second: GorgonWalkDown3
+  - first:
+      213: -7648448802588657843
+    second: GorgonIdleLeft1
+  - first:
+      213: -4796631717186351266
+    second: GorgonWalkLeft2
+  - first:
+      213: -3211652936236404657
+    second: GorgonIdleRight1
+  - first:
+      213: -4140931768159178409
+    second: GorgonWalkRight2
+  - first:
+      213: 7036583056737653567
+    second: GorgonWalkUp1
+  - first:
+      213: 5516438802050304748
+    second: GorgonWalkUp3
+  - first:
+      213: 680189358273296347
+    second: Gorgon_UpdatedSpriteSheet_8
+  - first:
+      213: -8711949789328162985
+    second: GorgonWalkDown2
+  - first:
+      213: -3921267003682356088
+    second: Gorgon_UpdatedSpriteSheet_10
+  - first:
+      213: 2142208689801991578
+    second: GorgonWalkDown4
+  - first:
+      213: 2496646577816199623
+    second: GorgonWalkUp2
+  - first:
+      213: 6412652280871401729
+    second: GorgonWalkUp4
+  - first:
+      213: 2252882500610720776
+    second: GorgonIdleUp1
+  - first:
+      213: 8493744730769823263
+    second: GorgonIdleUp2
+  - first:
+      213: 6929644206380049754
+    second: GorgonIdleRight2
+  - first:
+      213: -3203123338331430969
+    second: GorgonWalkRight1
+  - first:
+      213: -5846750254666303837
+    second: GorgonWalkRight3
+  - first:
+      213: -1637507188347669927
+    second: GorgonIdleRight3
+  - first:
+      213: 8821693990772813235
+    second: GorgonIdleLeft2
+  - first:
+      213: -7543777340526758223
+    second: GorgonIdleLeft3
+  - first:
+      213: -8621257674210694355
+    second: GorgonIdleLeft4
+  - first:
+      213: 741588111442715382
+    second: GorgonIdleLeft5
+  - first:
+      213: 8601518782985104158
+    second: Gorgon_UpdatedSpriteSheet_24
+  - first:
+      213: -7315586835445112223
+    second: Gorgon_UpdatedSpriteSheet_25
+  - first:
+      213: 1947949605674181223
+    second: Gorgon_UpdatedSpriteSheet_26
+  - first:
+      213: 7098606691561961297
+    second: Gorgon_UpdatedSpriteSheet_27
+  - first:
+      213: -2410109391729413136
+    second: Gorgon_UpdatedSpriteSheet_28
+  - first:
+      213: -5131362137213011364
+    second: Gorgon_UpdatedSpriteSheet_29
+  - first:
+      213: -7807482674293270544
+    second: Gorgon_UpdatedSpriteSheet_30
+  - first:
+      213: -6767961916869835847
+    second: Gorgon_UpdatedSpriteSheet_31
+  - first:
+      213: -8612289255138407009
+    second: Gorgon_UpdatedSpriteSheet_32
+  - first:
+      213: 7830083637291028782
+    second: Gorgon_UpdatedSpriteSheet_33
+  - first:
+      213: -6325405136689358559
+    second: Gorgon_UpdatedSpriteSheet_34
+  - first:
+      213: 5835462284223087260
+    second: Gorgon_UpdatedSpriteSheet_35
+  - first:
+      213: -5681296014491455390
+    second: Gorgon_UpdatedSpriteSheet_36
+  - first:
+      213: 8666586589563746141
+    second: Gorgon_UpdatedSpriteSheet_37
+  - first:
+      213: -1272129714905198246
+    second: Gorgon_UpdatedSpriteSheet_38
+  - first:
+      213: 6237591920869440868
+    second: Gorgon_UpdatedSpriteSheet_39
+  - first:
+      213: -8744286308048421651
+    second: Gorgon_UpdatedSpriteSheet_40
+  - first:
+      213: 3748646255191725608
+    second: Gorgon_UpdatedSpriteSheet_41
+  - first:
+      213: 7564788568165584838
+    second: Gorgon_UpdatedSpriteSheet_42
+  - first:
+      213: 4470032849557320384
+    second: Gorgon_UpdatedSpriteSheet_43
+  - first:
+      213: -5862025299485231353
+    second: Gorgon_UpdatedSpriteSheet_44
+  - first:
+      213: -2870035030819561712
+    second: Gorgon_UpdatedSpriteSheet_45
+  - first:
+      213: -5052937026792144307
+    second: Gorgon_UpdatedSpriteSheet_46
+  - first:
+      213: 4267006442681938034
+    second: Gorgon_UpdatedSpriteSheet_47
+  - first:
+      213: -7417982198274420979
+    second: Gorgon_UpdatedSpriteSheet_48
+  - first:
+      213: 8753026106466266892
+    second: Gorgon_UpdatedSpriteSheet_49
+  - first:
+      213: 381174166688344117
+    second: Gorgon_UpdatedSpriteSheet_50
+  - first:
+      213: -5335121572185328078
+    second: Gorgon_UpdatedSpriteSheet_51
+  - first:
+      213: 5110127955957794895
+    second: Gorgon_UpdatedSpriteSheet_52
+  - first:
+      213: 5630202099579468412
+    second: Gorgon_UpdatedSpriteSheet_53
+  - first:
+      213: 814038392514139203
+    second: Gorgon_UpdatedSpriteSheet_54
+  - first:
+      213: 875134662211690045
+    second: Gorgon_UpdatedSpriteSheet_55
+  - first:
+      213: -4531870075747853793
+    second: Gorgon_UpdatedSpriteSheet_56
+  - first:
+      213: -557784502257822922
+    second: Gorgon_UpdatedSpriteSheet_57
+  - first:
+      213: 3439519786906051980
+    second: Gorgon_UpdatedSpriteSheet_58
+  - first:
+      213: -2239413375313796415
+    second: Gorgon_UpdatedSpriteSheet_59
+  - first:
+      213: 7450156881306282563
+    second: Gorgon_UpdatedSpriteSheet_60
+  - first:
+      213: 8330320358075120907
+    second: Gorgon_UpdatedSpriteSheet_61
+  - first:
+      213: 7926312130143893005
+    second: Gorgon_UpdatedSpriteSheet_62
+  - first:
+      213: 222458390498805252
+    second: Gorgon_UpdatedSpriteSheet_63
+  - first:
+      213: 4806118450511228039
+    second: Gorgon_UpdatedSpriteSheet_64
+  - first:
+      213: -6877415011298850484
+    second: Gorgon_UpdatedSpriteSheet_65
+  - first:
+      213: -3014801812906796670
+    second: Gorgon_UpdatedSpriteSheet_66
+  - first:
+      213: 7208439136292486045
+    second: Gorgon_UpdatedSpriteSheet_67
+  - first:
+      213: -7016164707542445373
+    second: Gorgon_UpdatedSpriteSheet_68
+  - first:
+      213: 4857614738499256192
+    second: Gorgon_UpdatedSpriteSheet_69
+  - first:
+      213: -6257233078723267454
+    second: Gorgon_UpdatedSpriteSheet_70
+  - first:
+      213: 3328579786807500142
+    second: Gorgon_UpdatedSpriteSheet_71
+  - first:
+      213: -112644800088930037
+    second: Gorgon_UpdatedSpriteSheet_72
+  - first:
+      213: -3232862906140413340
+    second: Gorgon_UpdatedSpriteSheet_73
+  - first:
+      213: 1855654126400118848
+    second: Gorgon_UpdatedSpriteSheet_74
+  - first:
+      213: 4499975875372450183
+    second: Gorgon_UpdatedSpriteSheet_75
+  - first:
+      213: 7991163159176888561
+    second: Gorgon_UpdatedSpriteSheet_76
+  - first:
+      213: -5349905335612350851
+    second: Gorgon_UpdatedSpriteSheet_77
+  - first:
+      213: 8566723378411384408
+    second: Gorgon_UpdatedSpriteSheet_78
+  - first:
+      213: -5522951451485930934
+    second: Gorgon_UpdatedSpriteSheet_79
+  - first:
+      213: 6553476632806817736
+    second: Gorgon_UpdatedSpriteSheet_80
+  - first:
+      213: -8269201526761964083
+    second: Gorgon_UpdatedSpriteSheet_81
+  - first:
+      213: -3734108572054964266
+    second: Gorgon_UpdatedSpriteSheet_82
+  - first:
+      213: -6442445264577639912
+    second: Gorgon_UpdatedSpriteSheet_83
+  - first:
+      213: 8679863393757719188
+    second: Gorgon_UpdatedSpriteSheet_84
+  - first:
+      213: 8853146949167972712
+    second: Gorgon_UpdatedSpriteSheet_85
+  - first:
+      213: -3357193593880605615
+    second: Gorgon_UpdatedSpriteSheet_86
+  - first:
+      213: 2603531549324133510
+    second: Gorgon_UpdatedSpriteSheet_87
+  - first:
+      213: 1932480291107917562
+    second: Gorgon_UpdatedSpriteSheet_88
+  - first:
+      213: -5306077337689744786
+    second: Gorgon_UpdatedSpriteSheet_89
+  - first:
+      213: 1792741471037104485
+    second: Gorgon_UpdatedSpriteSheet_90
+  - first:
+      213: -8995639949611070622
+    second: Gorgon_UpdatedSpriteSheet_91
+  - first:
+      213: 4078938772422908722
+    second: Gorgon_UpdatedSpriteSheet_92
+  - first:
+      213: -8553013313162897168
+    second: Gorgon_UpdatedSpriteSheet_93
+  - first:
+      213: 6014009915578123393
+    second: Gorgon_UpdatedSpriteSheet_94
+  - first:
+      213: -3373302471201781270
+    second: Gorgon_UpdatedSpriteSheet_95
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GorgonWalkDown1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793a4bbe7367c2700800000000000000
+      internalID: 516918039790527383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkDown3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28ef2f81890fd450800000000000000
+      internalID: 6115617271050135599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleLeft1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d47f0f656504bd590800000000000000
+      internalID: -7648448802588657843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkLeft2
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f4cbaedd0fe6db0800000000000000
+      internalID: -4796631717186351266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleRight1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f40f9c9abaaed63d0800000000000000
+      internalID: -3211652936236404657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkRight2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751fdb71f747886c0800000000000000
+      internalID: -4140931768159178409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkUp1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3351693207f6a160800000000000000
+      internalID: 7036583056737653567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkUp3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceac365fcd35e8c40800000000000000
+      internalID: 5516438802050304748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gorgon_UpdatedSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd771e71e94807900800000000000000
+      internalID: 680189358273296347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkDown2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f3e0213dfe81780800000000000000
+      internalID: -8711949789328162985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gorgon_UpdatedSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8848d089f6cd499c0800000000000000
+      internalID: -3921267003682356088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkDown4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 254
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9517661477aabd10800000000000000
+      internalID: 2142208689801991578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkUp2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1ed60b5ded5a220800000000000000
+      internalID: 2496646577816199623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkUp4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109307516415ef850800000000000000
+      internalID: 6412652280871401729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleUp1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8048891b2b8d34f10800000000000000
+      internalID: 2252882500610720776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleUp2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f169162b4d7dfd570800000000000000
+      internalID: 8493744730769823263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleRight2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55602dd0ba0b2060800000000000000
+      internalID: 6929644206380049754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkRight1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfddfe6b483c83d0800000000000000
+      internalID: -3203123338331430969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonWalkRight3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a6b03cee9b2cdea0800000000000000
+      internalID: -5846750254666303837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleRight3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952736953e76649e0800000000000000
+      internalID: -1637507188347669927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleLeft2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd263df1f3fc6a70800000000000000
+      internalID: 8821693990772813235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleLeft3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b6f2493a7e1f4790800000000000000
+      internalID: -7543777340526758223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleLeft4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2baf8b92d32b5880800000000000000
+      internalID: -8621257674210694355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorgonIdleLeft5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f222305576aa4a00800000000000000
+      internalID: 741588111442715382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
