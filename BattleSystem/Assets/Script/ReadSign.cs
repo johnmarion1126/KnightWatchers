@@ -7,7 +7,7 @@ public class ReadSign : MonoBehaviour
 {
     public string Text;
     private Rigidbody2D SignBody;
-    public GameObject SignText;
+    public GameObject TextBox;
     //add gameobject dialogue box when the ui sprites are added
     
     void Start()
@@ -17,10 +17,10 @@ public class ReadSign : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        SignText.SetActive(true);
+       TextBox.SetActive(true);
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        SignText.SetActive(false);
+        TextBox.SetActive(false);
     }
 }
