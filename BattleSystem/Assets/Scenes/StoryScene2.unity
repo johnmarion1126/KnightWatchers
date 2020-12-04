@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 1969505719}
   - component: {fileID: 1969505718}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: ContinueButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

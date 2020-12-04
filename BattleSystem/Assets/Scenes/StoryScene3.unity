@@ -309,7 +309,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273545788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.4e-13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1284683109}
@@ -317,8 +317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.1, y: 22.7}
-  m_SizeDelta: {x: 266.62878, y: 40.346207}
+  m_AnchoredPosition: {x: -0.000075579, y: -0.000091553025}
+  m_SizeDelta: {x: 271.32275, y: 68.696075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1273545790
 MonoBehaviour:
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -24.472168}
+  m_margin: {x: 0, y: 0, z: 0.52172905, w: 0.04276562}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 1284683111}
   - component: {fileID: 1284683110}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: ContinueButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,8 +454,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.52, y: -4.36}
-  m_SizeDelta: {x: 266.62878, y: 80.692474}
+  m_AnchoredPosition: {x: 6.181, y: -4.483}
+  m_SizeDelta: {x: 271.32288, y: 68.69589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1284683110
 MonoBehaviour:

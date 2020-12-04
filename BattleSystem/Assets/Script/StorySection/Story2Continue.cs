@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Story3Continue : MonoBehaviour
+public class Story2Continue : MonoBehaviour
 {
-    public void ContinueButton()
+    public void ContinueButton2 ()
     {
-        SceneManager.LoadScene("StoryScene4");
+        SceneManager.LoadScene("StoryScene3");
     }
 }
