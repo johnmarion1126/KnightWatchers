@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Story4Continue : MonoBehaviour
+public class Story3Continue : MonoBehaviour
 {
-    public void ContinueButton()
+    public void ContinueButton2 ()
     {
-        SceneManager.LoadScene("OverWorld");
+        SceneManager.LoadScene("StoryScene4");
     }
 }
