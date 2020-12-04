@@ -30,6 +30,8 @@ public class BattleSystem : MonoBehaviour
 
 	public BattleState state;
 
+	public AudioSource attacksfx;
+
 	private int maxPlayers = 3;
 	private int playerID = 0;
 	int currentAction;
@@ -57,6 +59,7 @@ public class BattleSystem : MonoBehaviour
 
     void Start()
     {
+		attack = GetComponent<AudioSource> ();
 		state = BattleState.START;
 		StartCoroutine(SetupBattle());
     }
@@ -153,6 +156,7 @@ public class BattleSystem : MonoBehaviour
 		dialogBox.EnableActionSelector(false);
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " attacks!");
 		yield return new WaitForSeconds(0.7f);
+		attack.play();
 		StartCoroutine(enemyUnit.flash());
 		yield return new WaitForSeconds(0.3f);
 
