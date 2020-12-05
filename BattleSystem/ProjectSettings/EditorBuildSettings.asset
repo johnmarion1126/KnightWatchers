@@ -11,4 +11,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 64ed6cff48e2046429481e64748634c6
+  - enabled: 1
+    path: Assets/Scenes/BardBattleScene.unity
+    guid: 681ac787acf4bf444bf476011b30fe27
+  - enabled: 1
+    path: Assets/Scenes/FarmerLadyBattleScene.unity
+    guid: 4f5bcbc48ba8fb14fa94f2028386dfdc
+  - enabled: 1
+    path: Assets/Scenes/StoryScene1.unity
+    guid: 8506b1580763b0a41907325d331d0006
+  - enabled: 1
+    path: Assets/Scenes/StoryScene2.unity
+    guid: 1b25df90a7e0e8240a37ea03f56ef366
+  - enabled: 1
+    path: Assets/Scenes/StoryScene3.unity
+    guid: 44658a6adc9e8a8498914f5ad22e01e0
+  - enabled: 1
+    path: Assets/Scenes/StoryScene4.unity
+    guid: 14210818b0cad2341af8f31ebb8fa4a9
   m_configObjects: {}

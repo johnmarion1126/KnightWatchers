@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad7801840bfd8e4ebf75eca2549fdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: OverWorld
+  scene: StoryScene1
   whiteFade: {fileID: 1209005305}
 --- !u!114 &1373907487
 MonoBehaviour:
