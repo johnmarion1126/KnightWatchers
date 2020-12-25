@@ -36,6 +36,7 @@ public class BattleSystem : MonoBehaviour
 	int randomInt;
 
 	bool isDead;
+	bool isTalking;
 
 	void Awake()
 	{
@@ -64,23 +65,27 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator SetupBattle()
 	{
+		isTalking = true;
 		yield return dialogBox.TypeDialog(enemyUnit.unitName + " approaches...");
 		yield return new WaitForSeconds(1f);
+		isTalking = false;
 		StartCoroutine(PlayerTurn());
 	}
 
 	IEnumerator PlayerTurn()
 	{
+		isTalking = true;
 		state = BattleState.PLAYERTURN;
 		yield return dialogBox.TypeDialog("Choose an action!");
 		yield return new WaitForSeconds(0.5f);
 		yield return dialogBox.TypeDialog("");
 		dialogBox.EnableActionSelector(true);
+		isTalking = false;
 	}
 
 	private void Update()
 	{
-		if (state == BattleState.PLAYERTURN)
+		if (state == BattleState.PLAYERTURN && isTalking == false)
 		{
 			if (playerID == 0) 
 			{
@@ -150,6 +155,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator PlayerAttack(Unit playerUnit)
 	{
+		isTalking = true;
 		state = BattleState.PLAYERMOVE;
 		dialogBox.EnableActionSelector(false);
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " attacks!");
@@ -168,10 +174,12 @@ public class BattleSystem : MonoBehaviour
 		{
 			StartCoroutine(enemyUnit.fadeOut());
 			state = BattleState.WON;
+			isTalking = false;
 			StartCoroutine(EndBattle());
 		} 
 		else
 		{
+			isTalking = false;
 			state = BattleState.ENEMYTURN;
 			StartCoroutine(EnemyTurn());
 		}
@@ -179,6 +187,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator PlayerHeal(Unit playerUnit, BattleHUD playerHUD)
 	{
+		isTalking = true;
 		state = BattleState.PLAYERMOVE;
 		dialogBox.EnableActionSelector(false);
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " heals for 5...");
@@ -190,22 +199,25 @@ public class BattleSystem : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 
+		isTalking = false;
 		state = BattleState.ENEMYTURN;
 		StartCoroutine(EnemyTurn());
 	}
 
 	IEnumerator PlayerRun(Unit playerUnit)
 	{
+		isTalking = true;
 		dialogBox.EnableActionSelector(false);
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " ran away...");
 		yield return new WaitForSeconds(1f);
+		isTalking = false;
 		SceneManager.LoadScene("OverWorld");
 	}
 
 
 	IEnumerator EnemyTurn()
 	{
-		
+		isTalking = true;
 		if ((randomInt = Random.Range(1,4)) == 1) 
 		{
 			yield return specialMove(enemyUnit);
@@ -259,6 +271,7 @@ public class BattleSystem : MonoBehaviour
 
 		if(maxPlayers == 0)
 		{
+			isTalking = false;
 			state = BattleState.LOST;
 			StartCoroutine(EndBattle());
 		} 
@@ -269,7 +282,8 @@ public class BattleSystem : MonoBehaviour
 			{
 				playerID = 0;
 			}
-
+			
+			isTalking = false;
 			StartCoroutine(PlayerTurn());
 		}
 
@@ -277,6 +291,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator EndBattle()
 	{
+		isTalking = true;
 		if(state == BattleState.WON)
 		{
 			yield return dialogBox.TypeDialog("You won the battle!");
@@ -293,6 +308,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator specialMove(Unit enemyUnit)
 	{
+		isTalking = true;
 		if (enemyUnit.unitName == "Farm Lady")
 		{
 			yield return dialogBox.TypeDialog("Farm Lady uses milk!");
@@ -321,6 +337,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator tookDamage(Unit playerUnit, BattleHUD playerHUD, int damage)
 	{
+		isTalking = true;
 		yield return dialogBox.TypeDialog(playerUnit.unitName + " took damage!");
 		yield return new WaitForSeconds(1f);
 
