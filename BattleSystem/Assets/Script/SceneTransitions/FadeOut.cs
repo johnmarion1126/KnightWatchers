@@ -11,9 +11,17 @@ public class FadeOut : MonoBehaviour
     void Start()
     {
         whiteFade.canvasRenderer.SetAlpha(1.0f);
+        restartPosition();
         fadeOut();
     }
 
+    void restartPosition()
+    {
+        PlayerPrefs.DeleteKey("x");
+        PlayerPrefs.DeleteKey("y");
+        PlayerPrefs.DeleteKey("z");
+    }
+    
     // Update is called once per frame
     void fadeOut()
     {
